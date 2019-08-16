@@ -118,6 +118,23 @@ namespace MixERP.Net.VCards.Parser
             };
         }
 
+        static IEnumerable<string> ReadLogicalLines(TextReader reader)
+        {
+            var line = reader.ReadLine();
+            while (line != null)
+            {
+                var line2 = line;
+                NextLine:
+                line = reader.ReadLine();
+                if (!string.IsNullOrEmpty(line) && char.IsWhiteSpace(line[0]))
+                {
+                    line2 += line.Substring(1);
+                    goto NextLine;
+                }
+                yield return line2;
+            }
+        }
+
         public static IEnumerable<Token> Parse(string contents)
         {
             var tokens = new List<Token>();
@@ -127,8 +144,7 @@ namespace MixERP.Net.VCards.Parser
             }
 
             var reader = new StringReader(contents);
-            string line;
-            while (null != (line = reader.ReadLine()))
+            foreach (var line in ReadLogicalLines(reader))
             {
                 tokens.Add(GetToken(line));
             }
