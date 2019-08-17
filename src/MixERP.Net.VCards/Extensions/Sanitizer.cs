@@ -6,23 +6,24 @@ namespace MixERP.Net.VCards.Extensions
 {
     public static class Sanitizer
     {
-        private static readonly Dictionary<string, string> EspaceTokens = new Dictionary<string, string>
+        private static readonly IEnumerable<(string rawToken, string escapeSequence)> EspaceTokens = new List<(string, string)>
         {
-            {Environment.NewLine, @"\n"},
-            {@"\", @"\\"},
-            {",", @"\,"},
-            {";", @"\;"},
-            {":", @"\:"}
+            (@"\", @"\\"), // slash must be escaped first
+            (Environment.NewLine, @"\n"),
+            ("\n", @"\n"),
+            (",", @"\,"),
+            (";", @"\;"),
+            (":", @"\:")
         };
 
         public static string Escape(this string value)
         {
-            return string.IsNullOrWhiteSpace(value) ? string.Empty : EspaceTokens.Aggregate(value, (current, token) => current.Replace(token.Key, token.Value));
+            return string.IsNullOrWhiteSpace(value) ? string.Empty : EspaceTokens.Aggregate(value, (current, token) => current.Replace(token.rawToken, token.escapeSequence));
         }
 
         public static string UnEscape(this string value)
         {
-            return EspaceTokens.Aggregate(value, (current, token) => current.Replace(token.Value, token.Key));
+            return EspaceTokens.Reverse().Aggregate(value, (current, token) => current.Replace(token.escapeSequence, token.rawToken));
         }
     }
 }
