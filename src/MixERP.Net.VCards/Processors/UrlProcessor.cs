@@ -18,7 +18,7 @@ namespace MixERP.Net.VCards.Processors
 
             string url = vcard.Url.ToString();
 
-            return DefaultSerializer.GetVCardString("URL", url, true, vcard.Version);
+            return DefaultSerializer.GetVCardString("URL", url, false, vcard.Version);
         }
 
         public static string SerializeUris(IEnumerable<Uri> uris, string key, VCardVersion version)
