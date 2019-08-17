@@ -56,6 +56,7 @@ namespace MixERP.Net.VCards.Processors
                     <...remainder of base64-encoded data...>
                 **************************************************************/
                 encoding = string.Empty;
+                value = "data:" + type + ";base64," + value;
             }
 
             return DefaultSerializer.GetVCardString(key, value, false, version, type, encoding);
