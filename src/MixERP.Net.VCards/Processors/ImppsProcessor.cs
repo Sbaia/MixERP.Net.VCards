@@ -18,11 +18,12 @@ namespace MixERP.Net.VCards.Processors
                 return string.Empty;
             }
 
-            //Only vCard 4.0 supports IMPP property
-            if (vcard.Version != VCardVersion.V4)
-            {
-                return string.Empty;
-            }
+            // Whatever, fuck you, they will ignore the info if they don't support it
+            // //Only vCard 4.0 supports IMPP property
+            // if (vcard.Version != VCardVersion.V4)
+            // {
+            //     return string.Empty;
+            // }
 
 
             if (vcard.Impps == null)

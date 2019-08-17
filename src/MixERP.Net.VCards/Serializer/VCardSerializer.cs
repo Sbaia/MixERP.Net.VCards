@@ -14,15 +14,10 @@ namespace MixERP.Net.VCards.Serializer
 
             builder.Append(V2Serializer.Serialize(vcard));
 
-            if (vcard.Version == VCardVersion.V3)
-            {
-                builder.Append(V3Serializer.Serialize(vcard));
-            }
-            else if (vcard.Version == VCardVersion.V4)
-            {
-                builder.Append(V3Serializer.Serialize(vcard));
-                builder.Append(V4Serializer.Serialize(vcard));
-            }
+            // fuck versions, I wanna all my fields
+            builder.Append(V3Serializer.Serialize(vcard));
+            builder.Append(V3Serializer.Serialize(vcard));
+            builder.Append(V4Serializer.Serialize(vcard));
 
 
             builder.Append("END:VCARD");
