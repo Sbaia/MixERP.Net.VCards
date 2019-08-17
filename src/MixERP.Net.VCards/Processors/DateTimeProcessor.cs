@@ -39,7 +39,7 @@ namespace MixERP.Net.VCards.Processors
 
         public static string Serialize(DateTime? value, string key, VCardVersion version)
         {
-            string serializedValue = value?.ToString("o") ?? string.Empty;
+            string serializedValue = value?.ToString("yyyy-MM-ddTHH:mm:ssZ") ?? string.Empty;
 
             return string.IsNullOrWhiteSpace(serializedValue) ? string.Empty : DefaultSerializer.GetVCardString(key, serializedValue, false, version);
         }
