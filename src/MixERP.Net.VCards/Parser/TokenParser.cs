@@ -114,7 +114,8 @@ namespace MixERP.Net.VCards.Parser
             {
                 Key = keySections[0],
                 AdditionalKeyMembers = additionalKeyMembers,
-                Values = entry.Value.Trim().UnEscape().Split(';').Select(x => x.Trim('"').Trim('\'')).ToArray()
+                Values = entry.Value.Trim().UnEscape().Split(';').Select(x => x.Trim('"').Trim('\'')).ToArray(),
+                RawValue = entry.Value
             };
         }
 

@@ -30,5 +30,7 @@ namespace MixERP.Net.VCards.Models
         //5 -> 30314
         //6 -> United States of America
         public string[] Values { get; set; }
+
+        public string RawValue { get; set; }
     }
 }

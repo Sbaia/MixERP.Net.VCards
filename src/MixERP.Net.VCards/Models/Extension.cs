@@ -11,6 +11,7 @@ namespace MixERP.Net.VCards.Models
     {
         public string Key { get; set; }
         public IEnumerable<string> Values { get; set; }
+        public bool? EscapeContent { get; set; } = null;
 
         public string Value
         {
