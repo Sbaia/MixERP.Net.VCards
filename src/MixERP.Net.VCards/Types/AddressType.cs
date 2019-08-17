@@ -7,6 +7,7 @@
     /// </summary>
     public enum AddressType
     {
+        Unspecified,
         /// <summary>
         ///     Indicates a domestic address.
         /// </summary>

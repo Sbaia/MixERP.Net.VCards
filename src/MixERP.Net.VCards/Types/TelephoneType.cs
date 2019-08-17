@@ -5,6 +5,7 @@ namespace MixERP.Net.VCards.Types
     /// </summary>
     public enum TelephoneType
     {
+        Unspecified,
         /// <summary>
         /// Indicates preferred number.
         /// </summary>

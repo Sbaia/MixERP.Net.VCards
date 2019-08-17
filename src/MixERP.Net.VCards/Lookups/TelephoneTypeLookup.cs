@@ -9,6 +9,7 @@ namespace MixERP.Net.VCards.Lookups
     {
         private static readonly Dictionary<TelephoneType, string> Lookup = new Dictionary<TelephoneType, string>
         {
+            {TelephoneType.Unspecified, null},
             {TelephoneType.Preferred, "PREF"},
             {TelephoneType.Work, "WORK"},
             {TelephoneType.Home, "HOME"},
@@ -42,7 +43,7 @@ namespace MixERP.Net.VCards.Lookups
         {
             if (string.IsNullOrWhiteSpace(type))
             {
-                return TelephoneType.Preferred;
+                return TelephoneType.Unspecified;
             }
 
             return Lookup.FirstOrDefault(x => string.Equals(x.Value, type, StringComparison.OrdinalIgnoreCase)).Key;

@@ -9,6 +9,7 @@ namespace MixERP.Net.VCards.Lookups
     {
         private static readonly Dictionary<EmailType, string> Lookup = new Dictionary<EmailType, string>
         {
+            {EmailType.Unspecified, null},
             {EmailType.AmericaOnline, "AOL"},
             {EmailType.AppleLink, "AppleLink"},
             {EmailType.ATTMail, "ATTMail"},
@@ -42,7 +43,7 @@ namespace MixERP.Net.VCards.Lookups
         {
             if (string.IsNullOrWhiteSpace(type))
             {
-                return EmailType.Smtp;
+                return EmailType.Unspecified;
             }
 
             return Lookup.FirstOrDefault(x => string.Equals(x.Value, type, StringComparison.OrdinalIgnoreCase)).Key;

@@ -9,6 +9,7 @@ namespace MixERP.Net.VCards.Lookups
     {
         private static readonly Dictionary<AddressType, string> Lookup = new Dictionary<AddressType, string>
         {
+            {AddressType.Unspecified, null},
             {AddressType.Domestic, "DOM"},
             {AddressType.Home, "HOME"},
             {AddressType.International, "INTL"},
@@ -26,7 +27,7 @@ namespace MixERP.Net.VCards.Lookups
         {
             if (string.IsNullOrWhiteSpace(addressType))
             {
-                return AddressType.Postal;
+                return AddressType.Unspecified;
             }
 
             return Lookup.FirstOrDefault(x => string.Equals(x.Value, addressType, StringComparison.OrdinalIgnoreCase)).Key;

@@ -5,6 +5,7 @@ namespace MixERP.Net.VCards.Types
     /// </summary>
     public enum EmailType
     {
+        Unspecified,
         /// <summary>
         ///     Indicates America On-Line.
         /// </summary>
