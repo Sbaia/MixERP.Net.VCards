@@ -20,7 +20,7 @@ namespace MixERP.Net.VCards.Processors
             {
                 if (address.Longitude != null && address.Latitude != null)
                 {
-                    key = key + ";GEO=\"" + address.Longitude.Value.ToString("N4") + "," + address.Latitude.Value.ToString("N4") + "\"";
+                    key = key + ";GEO=\"" + address.Longitude.Value.ToString("N7") + "," + address.Latitude.Value.ToString("N7") + "\"";
                 }
 
                 if (address.Preference > 0)
@@ -65,7 +65,7 @@ namespace MixERP.Net.VCards.Processors
 
                     if (coordinates.Count > 1)
                     {
-                        address.Latitude = coordinates[0].ConvertToNullableT<double>();
+                        address.Latitude = coordinates[1].ConvertToNullableT<double>();
                     }
                 }
 
