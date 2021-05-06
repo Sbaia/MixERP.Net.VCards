@@ -38,7 +38,7 @@ namespace MixERP.Net.VCards.Processors
 
         public static void Parse(Token token, ref VCard vcard)
         {
-            string categories = token.Values[0];
+            string categories = string.Join(";", token.Values);
             if (string.IsNullOrWhiteSpace(categories))
             {
                 return;

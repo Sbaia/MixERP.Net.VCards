@@ -17,7 +17,7 @@ namespace MixERP.Net.VCards.Processors
 
         public static void Parse(Token token, ref VCard vcard)
         {
-            vcard.Title = token.Values[0];
+            vcard.Title = string.Join(";", token.Values);
         }
     }
 }

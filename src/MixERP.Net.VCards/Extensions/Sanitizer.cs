@@ -13,7 +13,7 @@ namespace MixERP.Net.VCards.Extensions
             ("\n", @"\n"),
             (",", @"\,"),
             (";", @"\;"),
-            (":", @"\:")
+            // (":", @"\:")
         };
 
         public static string Escape(this string value)
